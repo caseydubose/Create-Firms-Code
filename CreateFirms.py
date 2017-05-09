@@ -1,10 +1,12 @@
 from splinter import Browser
 import time
-import csv
 
-# define variables
+# You'll need to install Splinter and Chromium's pack to be able to run Chrome
+# However, this should be able to run with Splinter's IE process
+# I haven't bothered with relative paths to the files yet so that'll need updates
+# as well as you'll need to create a cred file
 
-
+# Sign In Options
 # Prompt for sign in and database
 # print('What is your Username?')
 # UserName = input()
@@ -32,7 +34,7 @@ browser.find_by_id('btnLogon').first.click()
 browser.find_by_text(CompanyName).first.click()
 time.sleep(1)
 
-# Create User Loop
+# Create Firm Loop | Comment the Save & Close line if you want to test
 for line in exampleFile:
     try:
         firmscreen = str('https://tracker.serengetilaw.com/tracker/MasterFirmInfo?id=' + str(line))
@@ -49,8 +51,8 @@ for line in exampleFile:
         time.sleep(2)
         office = browser.find_by_id('idcboClassID').first
         office.select('5000')
-        # browser.find_by_text("ACTIONS").first.click()
-        # browser.find_link_by_partial_text('Save & Close').first.click()
+        browser.find_by_text("ACTIONS").first.click()
+        browser.find_link_by_partial_text('Save & Close').first.click()
         with open("C:\\Users\\U0127576\Dropbox\Programming\Python\Create Firms\FirmLog.txt", "a") as myfile:
             myfile.write(line)
         time.sleep(1)
