@@ -4,27 +4,23 @@ import time
 # You'll need to install Splinter and Chromium's pack to be able to run Chrome
 # However, this should be able to run with Splinter's IE process
 # I haven't bothered with relative paths to the files yet so that'll need updates
-# as well as you'll need to create a cred file
+# as well as you'll need to create a cred file and define the absolute path.
 
-# Sign In Options
-# Prompt for sign in and database
-# print('What is your Username?')
-# UserName = input()
-# print('What is your Password?')
-# Password = input()
+#select Company
 print('What is the Company Name?')
 CompanyName = input()
 
 # import files
 exampleFile = open("C:\\Users\\U0127576\Dropbox\Programming\Python\Create Firms\\firmlist.txt")
-credFile = open('C:\\Users\\U0127576\Dropbox\Programming\Python\Create Firms\creds.txt')
-cred_lines = credFile.readlines()
+with open('C:\\Users\\U0127576\Dropbox\Programming\Python\Credentials\creds.txt') as credFile:
+    cred_lines = list(credFile)
+
 
 # initialize browser
 browser = Browser('chrome')
 
 # login
-browser.visit('http://tracker.serengetilaw.com')
+browser.visit('https://tracker.serengetilaw.com/tracker/Logon?szReturn=/')
 browser.find_by_id('logonUserID').first.fill(cred_lines[0])
 browser.find_by_id('btnLogon').first.click()
 browser.find_by_id('logonPassword').first.fill(cred_lines[1])
