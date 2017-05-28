@@ -2,15 +2,19 @@ from splinter import Browser
 import time
 
 # You'll need to install Splinter and Chromium's pack to be able to run Chrome
-# However, this should be able to run with Splinter's IE process
+# However, this should be able to run with Splinter's IE or Firefox process
 # I haven't bothered with relative paths to the files yet so that'll need updates
 # as well as you'll need to create a cred file and define the absolute path.
 
 #select Company
 print('What is the Company Name?')
-CompanyName = input()
+CompanyName = input() #This program will ask for the database name. It must match a name in Tracker.
 
 # import files
+# firmlist file needs to be the list of firm tracker IDs in a .txt file
+# cred.txt are you login credentials for Tracker as a .txt files first line UN, 2nd PWD.
+# FirmLog is a log file you need to create it will store the results of the program.
+
 exampleFile = open("C:\\Users\\U0127576\Dropbox\Programming\Python\Create Firms\\firmlist.txt")
 with open('C:\\Users\\U0127576\Dropbox\Programming\Python\Credentials\creds.txt') as credFile:
     cred_lines = list(credFile)
